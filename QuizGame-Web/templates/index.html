@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="card">
+    <h2>Welcome!</h2>
+    <p>This quiz has <strong>{{ total }}</strong> questions about Kenya.</p>
+    <form action="{{ url_for('start') }}" method="post">
+      <button class="btn" type="submit">Start Quiz</button>
+    </form>
+  </div>
+{% endblock %}

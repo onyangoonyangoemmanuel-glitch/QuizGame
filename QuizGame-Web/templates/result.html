@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="card">
+    <h2>Quiz Results</h2>
+    <p class="result">You scored <strong>{{ score }}</strong> out of <strong>{{ total }}</strong> ({{ percentage }}%)</p>
+
+    {% if wrong %}
+      <h3>Questions you got wrong</h3>
+      <ol>
+        {% for item in wrong %}
+          <li>
+            <div class="q">{{ item.q }}</div>
+            <div class="your">Your answer: <strong>{{ item.chosen }}</strong></div>
+            <div class="correct">Correct answer: <strong>{{ item.correct }}</strong></div>
+          </li>
+        {% endfor %}
+      </ol>
+    {% else %}
+      <p class="perfect">🏆 Perfect score — well done!</p>
+    {% endif %}
+
+    <form action="{{ url_for('restart') }}" method="post" style="display:inline-block;">
+      <button class="btn">Play Again</button>
+    </form>
+    <a class="btn secondary" href="{{ url_for('index') }}">Home</a>
+  </div>
+{% endblock %}

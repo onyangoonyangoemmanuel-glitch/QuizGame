@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="card">
+    <p class="meta">Question {{ q_index + 1 }} of {{ total }}</p>
+    <h3 class="question">{{ question }}</h3>
+
+    <form action="{{ url_for('answer') }}" method="post">
+      <div class="options">
+        {% for opt in options %}
+          <label class="option">
+            <input type="radio" name="option" value="{{ opt }}"> {{ opt }}
+          </label>
+        {% endfor %}
+      </div>
+
+      <div class="actions">
+        <button class="btn" type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+{% endblock %}
